@@ -1,5 +1,37 @@
 
-# APTRS
+# this tool modified only for Kali Nethunter arm64-64 bit Android device ( aarch64) architecture supported only one. if you want to use in another distro then you need to customise. 
+
+##just customise last line in install.sh file 
+
+```
+wkhtmltopdf -V
+if ! [ $? -eq 0 ]; then
+    echo 'Download and Install wkhtmltopdf Version 0.12.6 for PDF Report Generation - https://wkhtmltopdf.org/downloads.html'
+fi
+
+# install libssl1.1_1.1.1 arm64
+dpkg --install libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+
+#Clean libssl deb file
+rm libssl1.1_1.1.1f-1ubuntu2_arm64.deb
+
+# Check if wkhtmltopdf is installed
+if command -v wkhtmltopdf &>/dev/null; then
+    # Remove wkhtmltopdf if it is installed
+    sudo apt purge wkhtmltopdf
+fi
+
+# Install specified version of wkhtmltopdf
+sudo dpkg --install wkhtmltox_0.12.6-1.buster_arm64.deb
+
+# Clean up downloaded .deb file
+rm wkhtmltox_0.12.6-1.buster_arm64.deb
+```
+You need to remove this line and add your device architecture supported wkhtmltox_0.12.6 .deb and libssl1.1_1.1.1f .deb pkg 
+</br>
+
+some reference link for download wkhtmltopdf tool: https://wkhtmltopdf.org/downloads.html </br>
+
 <p align="center">
   <img src="https://repository-images.githubusercontent.com/558932728/e8ff2c72-3797-41ab-9505-90c9008cc472" />
 </p>
@@ -16,19 +48,6 @@ APTRS (Automated Penetration Testing Reporting System) is an automated reporting
 [![Twitter](https://img.shields.io/twitter/follow/ano_f_)](https://twitter.com/Ano_F_)
 
 
-## Support
-
-<a href="https://www.buymeacoffee.com/AnoF"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=AnoF&button_colour=FF5F5F&font_colour=ffffff&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00" /></a>
-
-
-## Documentation
-
-<a href="https://anof-cyber.github.io/APTRS/"><img src="https://i.ibb.co/NLTJ6MR/70686099-3855f780-1c79-11ea-8141-899e39459da2.png" alt="70686099-3855f780-1c79-11ea-8141-899e39459da2" border="0"></a>
-<a href="https://www.postman.com/anof-cyber/workspace/aptrs/collection/24236036-131e5e02-32e5-45be-9c15-02c91fe9230a?action=share&creator=24236036"><img src="https://assets.postman.com/postman-docs/run-in-postman-button-icon.jpg" alt="70686099-3855f780-1c79-11ea-8141-899e39459da2" width="200" height="50" border="0"></a>
-- Early Release Live API (https://aptrsapi.souravkalal.tech/)
-
-
-
 ## Prerequisites
 
 - Python 3.8 and above (https://www.python.org/downloads/release/python-3810/)
@@ -37,31 +56,15 @@ APTRS (Automated Penetration Testing Reporting System) is an automated reporting
 
 ## Installation
 
-The tool has been tested using Python 3.8.10 on Kali Linux 2022.2/3, Ubuntu 20.04.5 LTS, Windows 10/11.
-
-Windows Installation
-
-```Windows
-  git clone https://github.com/Anof-cyber/APTRS.git
-  cd APTRS
-  install.bat
-```
-    
 Linux Installation
 
-```Windows
+```
   git clone https://github.com/Anof-cyber/APTRS.git
   cd APTRS
   install.sh
 ```
   
 ## Running
-
-Windows 
-```Windows
-  run.bat
-```
-
 
 Linux
 ```bash
@@ -78,15 +81,6 @@ Linux
 - Easily Create PDF Reprot
 - Dynamically add POC, Description and Recommendations
 - Manage Customers and Comapany
-
-## Sponsor
-
-<p>This project is supported by:</p>
-<p>
-  <a href="https://m.do.co/c/daa899c901f2">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
-  </a>
-</p>
 
 ## Screenshots
 
@@ -123,14 +117,7 @@ Linux
 - Support Nessus Parsing
 
 
-## Authors
+## Authors (Thanks for your amazing tool)
 
 - [Sourav Kalal](https://twitter.com/Ano_F_)
 
-## Contributors
-
-We are seeking a volunteer developer with experience in Django or Front End development to help improve our project by adding more security and features. If you're interested, please reach out to kalalsourav20@gmail.com. For reporting errors or bugs, please use the Github issues feature rather than emailing.
-
-<a href = "https://github.com/Anof-cyber/APTRS/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=Anof-cyber/APTRS"/>
-</a>
